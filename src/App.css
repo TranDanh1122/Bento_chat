@@ -685,6 +685,10 @@ video {
   margin-top: 1.5rem;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
 .block {
   display: block;
 }
@@ -761,6 +765,11 @@ video {
 .w-max {
   width: -moz-max-content;
   width: max-content;
+}
+
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .rotate-180 {

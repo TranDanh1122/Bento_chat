@@ -3,6 +3,10 @@ import { useParams, NavLink } from "react-router-dom";
 import { v4 } from "uuid";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import { AppDispatch } from "../redux/store";
+import { useDispatch } from "react-redux";
+import { login, register } from "../redux/authSlicer";
+
 type Validator = {
     [key: string]: (value: string) => string | undefined;
 };
@@ -35,7 +39,7 @@ const validateForm: Validator = {
         if (!(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/).test(value)) return "Password need 1 hoa, 1 thường, 1 symbol đặc biệt và có ít nhất 8 kí tự "
     },
 }
-const useUserForm = () => {
+const useUserForm = (submitAction: (result: User) => void) => {
     const formRef = React.useRef<FormRef>({
         email: {
             value: React.createRef<HTMLInputElement>(),
@@ -52,34 +56,49 @@ const useUserForm = () => {
     })
     const checkvalid = (data: object, refs: FormRef) => {
         const fields = Object.keys(data)
-        let result = true
+        let isPass = true
+        const result = {} as User
         fields.forEach(field => {
-            console.log(refs , field);
-            
             const { value, error } = refs[field]
             const inValid = validateForm[field](value.current?.value ?? "")
             if (!error.current) return
             if (inValid) {
                 error.current.textContent = inValid
                 error.current.style.display = "block"
-                result = false
+                isPass = false
             } else {
                 error.current.textContent = ""
                 error.current.style.display = "none"
+                result[field] = value.current?.value ?? ""
             }
         })
-        return result
+        return { isPass, result }
     }
     const hanleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const formData = Object.fromEntries(new FormData(e.target as HTMLFormElement));
-        if (!checkvalid(formData, formRef.current)) return;
+        const { isPass, result } = checkvalid(formData, formRef.current)
+        if (!isPass) return;
+        submitAction(result)
     }
     return { formRef, hanleSubmit }
 }
 export default function Auth(): React.JSX.Element {
     const { type } = useParams()
-    const { formRef, hanleSubmit } = useUserForm()
+    const dispatch: AppDispatch = useDispatch()
+    const submitCallBack = (data: User) => {
+        switch (type) {
+            case "login":
+                dispatch(login(data))
+                break;
+            case "register":
+                dispatch(register(data))
+                break;
+            case "forgot":
+                break;
+        }
+    }
+    const { formRef, hanleSubmit } = useUserForm(submitCallBack)
     return (
         <div className="container mb:max-w-none w-full h-full min-h-[100vh] flex flex-col items-center justify-center" >
             <div className="flex gap-4 items-center justify-between w-full ">

@@ -18,6 +18,7 @@ declare global {
         status: string,
         createdAt: string,
         updatedAt: string,
+        [key: string]: string | number
     }
 }
 export {
