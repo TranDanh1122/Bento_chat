@@ -1,6 +1,6 @@
 import { AuthAPI } from "../api/authAPI";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-export const register = createAsyncThunk("auth/register", async (data: Pick<User, "firstName" | "lastName" | "username" | "password">) => {
+export const register = createAsyncThunk("auth/register", async (data: Pick<User, "lastName" | "username" | "password">) => {
     const response = await AuthAPI.register(data)
     return response.data
 })

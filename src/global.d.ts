@@ -3,7 +3,6 @@ declare global {
         id: number,
         avatar: string,
         cover: string,
-        firstName: string,
         lastName: string,
         username: string,
         password: string,
