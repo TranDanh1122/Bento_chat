@@ -9,7 +9,11 @@ module.exports = {
       screens: {
         mb: { min: "0", max: "767px" },
         tb: { min: "768px", max: "1023px" }
-
+      },
+      fontFamily: {
+        rubik: "Rubik, sans-serif",
+        inter: "Inter , sans-serif",
+        host: "Host Grotesk, sans-serif"
       }
     },
   },

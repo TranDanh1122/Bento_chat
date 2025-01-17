@@ -3,7 +3,94 @@
 @tailwind utilities;
 
 @layer base {
-    
+    .title {
+        @apply font-medium text-[1.25rem] leading-6 font-rubik mb:text-[1.125rem] mb:leading-[1.75rem]
+    }
+
+    .body {
+        @apply leading-6 font-inter
+    }
+
+    .body_14_r {
+        @apply leading-6 font-inter text-[0.875rem]
+    }
+
+    .body_14_m {
+        @apply leading-6 font-inter text-[0.875rem] font-medium
+    }
+
+    .body_14_b {
+        @apply font-inter text-[.875rem] font-bold leading-6
+    }
+
+    .base_r {
+        @apply leading-6 font-rubik
+    }
+
+    .base_m {
+        @apply leading-6 font-rubik font-medium
+    }
+
+    .base_14_m {
+        @apply leading-5 font-rubik font-medium text-[0.875rem]
+    }
+
+    .base_14_r {
+        @apply leading-5 font-rubik text-[0.875rem]
+    }
+
+    .base_14_sm {
+        @apply leading-5 font-rubik text-[0.875rem] font-semibold
+    }
+
+    .caption_sm {
+        @apply leading-4 text-[.75rem] font-semibold
+    }
+
+    .caption_r {
+        @apply leading-4 text-[.75rem]
+    }
+
+    .caption_sm_u {
+        @apply text-[.75rem] font-semibold leading-4
+    }
+
+    .line {
+        @apply font-rubik font-semibold text-[.75rem] leading-5
+    }
+
+    .h2 {
+        @apply font-host leading-[3.5rem] font-bold text-[3rem] tracking-[1px]
+    }
+
+    .h3 {
+        @apply font-host leading-[3rem] font-bold text-[2.5rem] tracking-[.8px] mb:text-[2.25rem] mb:leading-[2.75rem]
+    }
+
+    .h4 {
+        @apply font-host leading-[2.5rem] font-medium text-[2rem] tracking-[.6px]
+    }
+
+    .h5 {
+        @apply font-host leading-[1.75rem] font-bold text-[1.5rem]
+    }
+
+    .small {
+        @apply font-rubik text-[0.625rem] leading-3
+    }
+
+    .small_sm {
+        @apply font-rubik text-[0.625rem] leading-3 font-semibold
+    }
+
+    .subtitle {
+        @apply font-rubik text-[1.25rem] leading-8 font-light
+    }
+
+    .body_l {
+        @apply font-inter text-[1.125rem] leading-[1.75rem]
+    }
+
 }
 
 body,
@@ -11,4 +98,6 @@ html {
     width: 100%;
     height: 100%;
     min-height: 100vh;
+
 }
+
