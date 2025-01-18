@@ -11,11 +11,15 @@ type Validator = {
     [key: string]: (value: string) => string | undefined;
 };
 interface FormRef {
-    email: {
+    username: {
         value: React.RefObject<HTMLInputElement>,
         error: React.RefObject<HTMLSpanElement>
     },
-    name: {
+    lastName: {
+        value: React.RefObject<HTMLInputElement>,
+        error: React.RefObject<HTMLSpanElement>
+    },
+    firstName: {
         value: React.RefObject<HTMLInputElement>,
         error: React.RefObject<HTMLSpanElement>
     },
@@ -29,8 +33,9 @@ interface FormRef {
     }
 }
 const validateForm: Validator = {
-    name: (value: string) => { if (!value.trim()) return "Name is required" },
-    email: (value: string) => {
+    firstName: (value: string) => { if (!value.trim()) return "Fisrt Name is required" },
+    lastName: (value: string) => { if (!value.trim()) return "Last Name is required" },
+    username: (value: string) => {
         if (!value.trim()) return 'Email is required'
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Email is not valid'
     },
@@ -41,11 +46,15 @@ const validateForm: Validator = {
 }
 const useUserForm = (submitAction: (result: User) => void) => {
     const formRef = React.useRef<FormRef>({
-        email: {
+        username: {
             value: React.createRef<HTMLInputElement>(),
             error: React.createRef<HTMLSpanElement>()
         },
-        name: {
+        lastName: {
+            value: React.createRef<HTMLInputElement>(),
+            error: React.createRef<HTMLSpanElement>()
+        },
+        firstName: {
             value: React.createRef<HTMLInputElement>(),
             error: React.createRef<HTMLSpanElement>()
         },
@@ -103,13 +112,15 @@ export default function Auth(): React.JSX.Element {
         <div className="container mb:max-w-none w-full h-full min-h-[100vh] flex flex-col items-center justify-center" >
             <div className="flex gap-4 items-center justify-between w-full ">
                 <img loading="lazy" src="/images/decor.png" className="w-1/3 h-[25vh] max-h-[256px] object-cover rotate-180" />
-                <form onSubmit={(e) => hanleSubmit(e)} className="w-1/3 bg-[url(/images/modal.png)] bg-cover bg-no-repeat bg-center bg-fixed px-10 py-14 rounded-[2rem] shadow-lg shadow-[#f8f8f8]/30">
+                <form autoComplete="off" noValidate={true} onSubmit={(e) => hanleSubmit(e)} className="w-1/3 bg-[url(/images/modal.png)] bg-cover bg-no-repeat bg-center bg-fixed px-10 py-14 rounded-[2rem] shadow-lg shadow-[#f8f8f8]/30">
                     <img loading="lazy" src="/images/logo.png" alt="" className="w-[3.75rem] h-[3.75rem] object-cover mx-auto" />
                     <h1 className="h4 text-white text-center mt-6">Bento Social</h1>
                     <div className="flex-col flex gap-3 mt-10">
-                        {type == "register" && <Input key={v4()} type="text" error={formRef.current.name.error} name="name" placeholder="Full name" ref={formRef.current.name.value} />}
-                        <Input key={v4()} type="text" name="email" placeholder="Email" ref={formRef.current.email.value} error={formRef.current.email.error} />
-                        {(type == "register" || type == "login" || type == "email") && <Input key={v4()} type="password" error={formRef.current.password.error} name="password" placeholder="Password" hasToolTip={true} tooltip="Password must has 8 kí tự" ref={formRef.current.password.value} />}
+                        {type == "register" && <Input key={v4()} label="First Name" type="text" error={formRef.current.firstName.error} name="firstName" placeholder="First name" ref={formRef.current.firstName.value} />}
+                        {type == "register" && <Input key={v4()} label="Last Name" type="text" error={formRef.current.lastName.error} name="lastName" placeholder="Last name" ref={formRef.current.lastName.value} />}
+
+                        <Input key={v4()} label="User Name" type="text" name="username" placeholder="Username/Email" ref={formRef.current.username.value} error={formRef.current.username.error} />
+                        {(type == "register" || type == "login" || type == "email") && <Input key={v4()} label="Password" type="password" error={formRef.current.password.error} name="password" placeholder="Password" hasToolTip={true} tooltip="Password must has 8 kí tự" ref={formRef.current.password.value} />}
                     </div>
                     <div className="flex items-center flex-col justify-start gap-3 mt-6">
                         <Button type="submit" text={type == "login" ? "Signin" : (type == "forgot" ? "Reset password" : "Create your account")} />

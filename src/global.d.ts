@@ -4,6 +4,7 @@ declare global {
         avatar: string,
         cover: string,
         lastName: string,
+        firstName: string,
         username: string,
         password: string,
         bio: string,

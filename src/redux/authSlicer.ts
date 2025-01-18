@@ -1,8 +1,16 @@
 import { AuthAPI } from "../api/authAPI";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-export const register = createAsyncThunk("auth/register", async (data: Pick<User, "lastName" | "username" | "password">) => {
-    const response = await AuthAPI.register(data)
-    return response.data
+export const register = createAsyncThunk("auth/register", async (data: Pick<User, "firstName" | "lastName" | "username" | "password">, { rejectWithValue }) => {
+    try {
+        const response = await AuthAPI.register(data)
+        return response.data
+    } catch (error: any) {
+        console.log(error);
+        return rejectWithValue(
+            error.response?.data?.message || "Registration failed"
+        );
+    }
+
 })
 export const login = createAsyncThunk("auth/login", async (data: Pick<User, "username" | "password">) => {
     const respone = await AuthAPI.login(data)
@@ -23,12 +31,14 @@ export const deleteUser = createAsyncThunk("auth/deleteUser", async (payload: { 
 interface AuthStore {
     token: string,
     user: User,
-    loading: boolean
+    loading: boolean,
+    error: string
 }
 const initData: AuthStore = {
     token: "",
     user: {} as User,
-    loading: false
+    loading: false,
+    error: ""
 }
 const authSlicer = createSlice({
     "name": "auth",
@@ -48,6 +58,7 @@ const authSlicer = createSlice({
             console.log(action.payload);
         }).addCase(register.rejected, (state: AuthStore, action: PayloadAction<unknown>) => {
             state.loading = false
+            state.error = action.payload as string
             console.error(action.payload);
         }).addCase(login.pending, (state: AuthStore) => {
             state.loading = true

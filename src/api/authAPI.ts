@@ -1,7 +1,7 @@
 import api from "./api";
 
 export const AuthAPI = {
-    register: (data: Pick<User, "lastName" | "username" | "password">) => api.post("register", data),
+    register: (data: Pick<User, "firstName" | "lastName" | "username" | "password">) => api.post("register", data),
     login: (data: Pick<User, "username" | "password">) => api.post("authenticate", data),
     profile: (token: string) => api.get("profile", { headers: { Authorization: `Bearer ${token}` } }),
     updateProfile: (data: Omit<User, "role" | "status">, token: string) => api.patch("profile", data, { headers: { Authorization: `Bearer ${token}` } }),
