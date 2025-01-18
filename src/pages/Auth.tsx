@@ -1,12 +1,13 @@
 import React from "react";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import { AppDispatch } from "../redux/store";
+import { AppDispatch, AppState } from "../redux/store";
 import { useDispatch } from "react-redux";
 import { login, register } from "../redux/authSlicer";
-
+import { NotificationContext } from "../context/NotificationContext";
+import { useSelector } from "react-redux";
 type Validator = {
     [key: string]: (value: string) => string | undefined;
 };
@@ -95,20 +96,64 @@ const useUserForm = (submitAction: (result: User) => void) => {
 export default function Auth(): React.JSX.Element {
     const { type } = useParams()
     const dispatch: AppDispatch = useDispatch()
+    const { pushNotify } = React.useContext(NotificationContext)
+    const { error } = useSelector((state: AppState) => state.auth)
+    const navigate = useNavigate()
     const submitCallBack = (data: User) => {
         switch (type) {
-            case "login":
-                dispatch(login(data))
+            case "login": {
+                const hanleLogin = async () => {
+                    try {
+                        await dispatch(login(data))
+                        navigate("/")
+                    } catch (e: unknown) {
+                        console.error(e);
+                        if (error)
+                            pushNotify({
+                                type: "SHOW",
+                                payload: {
+                                    title: error,
+                                    type: "error",
+                                    isShow: true,
+                                    showTime: 3000
+                                }
+                            })
+                    }
+                }
+                hanleLogin()
+            }
+
                 break;
-            case "register":
-                dispatch(register(data))
+            case "register": {
+                const handleRegister = async () => {
+                    try {
+                        await dispatch(register(data))
+                        navigate("/auth/login")
+                    } catch (e: unknown) {
+                        console.error(e);
+
+                        pushNotify({
+                            type: "SHOW",
+                            payload: {
+                                title: error,
+                                type: "error",
+                                isShow: true,
+                                showTime: 3000
+                            }
+                        })
+                    }
+                }
+                handleRegister()
+            }
+
+
                 break;
             case "forgot":
                 break;
         }
     }
     const { formRef, hanleSubmit } = useUserForm(submitCallBack)
-    return (
+    return (<>
         <div className="container mb:max-w-none w-full h-full min-h-[100vh] flex flex-col items-center justify-center" >
             <div className="flex gap-4 items-center justify-between w-full ">
                 <img loading="lazy" src="/images/decor.png" className="w-1/3 h-[25vh] max-h-[256px] object-cover rotate-180" />
@@ -137,5 +182,7 @@ export default function Auth(): React.JSX.Element {
                 <img src="/images/avt_group.png" alt="avatar group" className="object-cover w-[11rem] h-10" />
             </div>
         </div >
+    </>
+
     )
 }

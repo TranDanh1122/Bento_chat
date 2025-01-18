@@ -41,7 +41,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((({ label, name, ty
         el.dataset.src = src ?? ""
         if (typeof ref === "function") return;
         if (ref && ref.current) {
-            ref.current.getAttribute("type") == "text" ? ref.current.setAttribute("type", "password") : ref.current.setAttribute("type", "text")
+            if (ref.current.getAttribute("type") === "text") {
+                ref.current.setAttribute("type", "password");
+            } else {
+                ref.current.setAttribute("type", "text");
+            }
         }
     }
     return (

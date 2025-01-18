@@ -12,9 +12,16 @@ export const register = createAsyncThunk("auth/register", async (data: Pick<User
     }
 
 })
-export const login = createAsyncThunk("auth/login", async (data: Pick<User, "username" | "password">) => {
-    const respone = await AuthAPI.login(data)
-    return respone.data
+export const login = createAsyncThunk("auth/login", async (data: Pick<User, "username" | "password">, { rejectWithValue }) => {
+    try {
+        const respone = await AuthAPI.login(data)
+        return respone.data
+    } catch (error: any) {
+        console.log(error);
+        return rejectWithValue(
+            error.response?.data?.message || "Login failed"
+        );
+    }
 })
 export const profile = createAsyncThunk("auth/profile", async (token: string) => {
     const respone = await AuthAPI.profile(token)
@@ -54,7 +61,7 @@ const authSlicer = createSlice({
             state.loading = true
         }).addCase(register.fulfilled, (state: AuthStore, action: PayloadAction<string>) => {
             state.loading = false
-            state.token = action.payload
+            //     state.token = action.payload
             console.log(action.payload);
         }).addCase(register.rejected, (state: AuthStore, action: PayloadAction<unknown>) => {
             state.loading = false
@@ -62,9 +69,9 @@ const authSlicer = createSlice({
             console.error(action.payload);
         }).addCase(login.pending, (state: AuthStore) => {
             state.loading = true
-        }).addCase(login.fulfilled, (state: AuthStore, action: PayloadAction<string>) => {
+        }).addCase(login.fulfilled, (state: AuthStore, action: PayloadAction<{ data: string }>) => {
             state.loading = false
-            state.token = action.payload
+            state.token = action.payload.data
             console.log(action.payload);
         }).addCase(login.rejected, (state: AuthStore, action: PayloadAction<unknown>) => {
             state.loading = false

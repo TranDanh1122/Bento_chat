@@ -4,7 +4,7 @@
 
 @layer base {
     .title {
-        @apply font-medium text-[1.25rem] leading-6 font-rubik mb:text-[1.125rem] mb:leading-[1.75rem]
+        @apply font-medium text-[1.25rem] leading-6 font-rubik
     }
 
     .body {
@@ -64,7 +64,7 @@
     }
 
     .h3 {
-        @apply font-host leading-[3rem] font-bold text-[2.5rem] tracking-[.8px] mb:text-[2.25rem] mb:leading-[2.75rem]
+        @apply font-host leading-[3rem] font-bold text-[2.5rem] tracking-[.8px]
     }
 
     .h4 {
