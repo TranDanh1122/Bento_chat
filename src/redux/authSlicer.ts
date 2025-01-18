@@ -23,16 +23,23 @@ export const login = createAsyncThunk("auth/login", async (data: Pick<User, "use
         );
     }
 })
-export const profile = createAsyncThunk("auth/profile", async (token: string) => {
-    const respone = await AuthAPI.profile(token)
+export const profile = createAsyncThunk("auth/profile", async (_, { rejectWithValue }) => {
+    try {
+        const respone = await AuthAPI.profile()
+        return respone.data
+    } catch (error: any) {
+        return rejectWithValue(
+            error.response?.data?.message || "Profile failed"
+        );
+    }
+
+})
+export const updateProfile = createAsyncThunk("auth/updateProfile", async (payload: { data: Omit<User, "role" | "status"> }) => {
+    const respone = await AuthAPI.updateProfile(payload.data)
     return respone.data
 })
-export const updateProfile = createAsyncThunk("auth/updateProfile", async (payload: { data: Omit<User, "role" | "status">, token: string }) => {
-    const respone = await AuthAPI.updateProfile(payload.data, payload.token)
-    return respone.data
-})
-export const deleteUser = createAsyncThunk("auth/deleteUser", async (payload: { id: string, token: string }) => {
-    const respone = await AuthAPI.deleteUser(payload.token, payload.id)
+export const deleteUser = createAsyncThunk("auth/deleteUser", async (payload: { id: string }) => {
+    const respone = await AuthAPI.deleteUser(payload.id)
     return respone.data
 })
 interface AuthStore {
@@ -79,10 +86,12 @@ const authSlicer = createSlice({
         })
             .addCase(profile.pending, (state: AuthStore) => {
                 state.loading = true
+                console.log(1);
+
             }).addCase(profile.fulfilled, (state: AuthStore, action: PayloadAction<User>) => {
                 state.loading = false
                 state.user = action.payload
-                console.log(action.payload);
+                console.log(action.payload, 1);
             }).addCase(profile.rejected, (state: AuthStore, action: PayloadAction<unknown>) => {
                 state.loading = false
                 console.error(action.payload);

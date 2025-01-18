@@ -97,7 +97,7 @@ export default function Auth(): React.JSX.Element {
     const { type } = useParams()
     const dispatch: AppDispatch = useDispatch()
     const { pushNotify } = React.useContext(NotificationContext)
-    const { error } = useSelector((state: AppState) => state.auth)
+    const { error, token } = useSelector((state: AppState) => state.auth)
     const navigate = useNavigate()
     const submitCallBack = (data: User) => {
         switch (type) {
@@ -105,7 +105,9 @@ export default function Auth(): React.JSX.Element {
                 const hanleLogin = async () => {
                     try {
                         await dispatch(login(data))
-                        navigate("/")
+                        console.log(token);
+                        
+                       navigate("/")
                     } catch (e: unknown) {
                         console.error(e);
                         if (error)

@@ -6,6 +6,7 @@ import Auth from './pages/Auth'
 import React from 'react'
 import Modal from './components/Modal'
 import { NotificationContext } from './context/NotificationContext'
+import Home from './pages/Home'
 function App() {
   const { noti } = React.useContext(NotificationContext)
 
@@ -13,6 +14,7 @@ function App() {
     <>
       <Routes>
         <Route path='auth/:type' element={<Auth />}></Route>
+        <Route path='/' index element={<Home />}></Route>
       </Routes>
       {noti.isShow == true && <Modal />}
     </>
