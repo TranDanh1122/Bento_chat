@@ -112,10 +112,19 @@ html {
     background-position: center;
     background-color: #202020;
 }
+
 input::-webkit-autofill,
 input::-webkit-autofill:hover,
 input::-webkit-autofill:focus {
-  background: none !important;
-  color: inherit !important;
-  box-shadow: none !important;
+    background: none !important;
+    color: inherit !important;
+    box-shadow: none !important;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
 }

@@ -1,4 +1,4 @@
 import api from "./api";
 export const TopicApi = {
-    list: ()
+    listTopic: (filter: Filter) => api.get("topics", { params: filter })
 }
