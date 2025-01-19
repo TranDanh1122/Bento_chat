@@ -30,42 +30,41 @@ const useFetchAPI = () => {
     const { pushNotify } = React.useContext(NotificationContext)
     const dispatch: AppDispatch = useDispatch()
     React.useEffect(() => {
-        // const fetchPosts = async () => {
-        //     try {
-        //         await dispatch(listPost({ data: filter }))
-        //     } catch (e: unknown) {
-        //         pushNotify({
-        //             type: "SHOW",
-        //             payload: {
-        //                 title: error,
-        //                 type: "error",
-        //                 isShow: true,
-        //                 showTime: 3000
-        //             }
-        //         })
-        //     }
-        // }
-        // fetchPosts()
-
+        const fetchPosts = async () => {
+            try {
+                await dispatch(listPost({ data: filter }))
+            } catch (e: unknown) {
+                pushNotify({
+                    type: "SHOW",
+                    payload: {
+                        title: error,
+                        type: "error",
+                        isShow: true,
+                        showTime: 3000
+                    }
+                })
+            }
+        }
+        fetchPosts()
     }, [filter])
     React.useEffect(() => {
-        // const fetchUser = async () => {
-        //     try {
-        //         await dispatch(profile())
-        //     } catch (e: unknown) {
-        //         console.log(e);
-        //         pushNotify({
-        //             type: "SHOW",
-        //             payload: {
-        //                 title: authError,
-        //                 type: "error",
-        //                 isShow: true,
-        //                 showTime: 3000
-        //             }
-        //         })
-        //     }
-        // }
-        // fetchUser()
+        const fetchUser = async () => {
+            try {
+                await dispatch(profile())
+            } catch (e: unknown) {
+                console.log(e);
+                pushNotify({
+                    type: "SHOW",
+                    payload: {
+                        title: authError,
+                        type: "error",
+                        isShow: true,
+                        showTime: 3000
+                    }
+                })
+            }
+        }
+        fetchUser()
     }, [])
     return { posts, loading }
 }
