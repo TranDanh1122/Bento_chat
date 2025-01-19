@@ -10,8 +10,8 @@ const User = React.memo(({ user, children }: { user: User, children: React.React
 
         <img src={user.avatar ?? "/images/avt_5.png"} alt="" className="w-8 h-8 object-cover rounded-full" />
         <div className="flex flex-col gap-1">
-            <NavLink to="#" className="base-14_sm text-[#F8F8F8]/70 text-opacity-80 text-nowrap text-ellipsis">{`${user.firstName} ${user.lastName}`}</NavLink>
-            <span className="text-[#F8F8F8]/50 text-opacity-45 caption">@kohaku</span>
+            <NavLink to="#" className="base-14_sm text-bsColor/70 text-opacity-80 text-nowrap text-ellipsis">{`${user.firstName} ${user.lastName}`}</NavLink>
+            <span className="text-bsColor/50 text-opacity-45 caption">@kohaku</span>
         </div>
         {children}
 

@@ -14,14 +14,14 @@ const Nav = React.memo((): React.JSX.Element => {
         {NAV_DATA.map(nav => (
             <li className="">
                 <NavLink className={({ isActive }) => `base_14_sm flex items-center justify-start gap-4 p-3  rounded-xl
-                ${isActive ? "text-white bg-[#f8f8f8]/20" : "text-[#f8f8f8]/50"}`}
+                ${isActive ? "text-white bg-bsColor/20" : "text-bsColor/50"}`}
                     to={`${nav.to}`}>
                     {({ isActive }) => (
                         <>
                             <i style={{
                                 mask: `url(${nav.icon}) center/ contain no-repeat`,
                                 WebkitMask: `url(${nav.icon}) center/ contain no-repeat`
-                            }} className={`w-[1.125rem] h-[1.125rem] bg-[#F8F8F8]/50 ${isActive ? "bg-white" : "bg-[#F8F8F8]/50"}`}> </i>
+                            }} className={`w-[1.125rem] h-[1.125rem] bg-bsColor/50 ${isActive ? "bg-white" : "bg-bsColor/50"}`}> </i>
                             {nav.title}
                         </>
                     )}

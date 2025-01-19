@@ -9,7 +9,7 @@ const Sidebar = React.memo((): React.JSX.Element => {
     console.log(user);
 
     const menu = React.useRef<HTMLElement>(null)
-    return <aside ref={menu} className=" w-2/12 h-full min-h-full bg-[#f8f8f8]/5 p-3 flex flex-col justify-between backdrop-blur-xl" >
+    return <aside ref={menu} className=" w-2/12 h-full min-h-full bg-bsColor/5 p-3 flex flex-col justify-between backdrop-blur-xl" >
         <div>
             <div className="flex items-center justify-between pb-3">
                 <img src="/images/logo.png" alt="logo" className="w-9 h-9 object-cover" />

@@ -50,14 +50,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((({ label, name, ty
     }
     return (
         <div className="relative">
-            <label className="absolute top-[-0.5rem] z-10 left-[.5rem] bg-[#302f30] px-2 py-1 w-fit h-fit small text-[#f8f8f8]/80 hidden" htmlFor={name}>{label}</label>
+            <label className="absolute top-[-0.5rem] z-10 left-[.5rem] bg-[#302f30] px-2 py-1 w-fit h-fit small text-bsColor/80 hidden" htmlFor={name}>{label}</label>
             <input autoComplete="off" onFocus={() => handleFocusOrBlur(true)} onBlur={() => handleFocusOrBlur(false)} onChange={() => { if (error.current) error.current.textContent = "" }} type={type}
-                className="base_14_r w-full relative z-0 outline-none text-[#F8F8F8] bg-[#383838] rounded-xl px-5 py-4"
+                className="base_14_r w-full relative z-0 outline-none text-bsColor bg-[#383838] rounded-xl px-5 py-4"
                 name={name} placeholder={placeholder} ref={ref} />
             <span ref={error} className="text-red-600 "></span>
-            {type == "password" && <NavLink to="/auth/forgot" className="caption_r text-[#F8F8F8]/50 underline block w-fit text-right mt-3 ml-auto ">Forgot password</NavLink>}
+            {type == "password" && <NavLink to="/auth/forgot" className="caption_r text-bsColor/50 underline block w-fit text-right mt-3 ml-auto ">Forgot password</NavLink>}
             {type == "password" && <img onMouseDown={(e) => showPass(e)} data-src="/images/eye-show.svg" src="/images/eye.svg" className="eye w-6 h-6 object-cover absolute top-0 right-0 hidden" style={{ transform: "translate(-50% , 50%)" }} />}
-            {hasToolTip && <img onMouseLeave={hideTip} onMouseEnter={showTip} className="absolute tip cursor-pointer top-[.5rem] right-[1rem] w-3 h-3 object-cover rounded-full  bg-[#F8F8F8]/50" />}
+            {hasToolTip && <img onMouseLeave={hideTip} onMouseEnter={showTip} className="absolute tip cursor-pointer top-[.5rem] right-[1rem] w-3 h-3 object-cover rounded-full  bg-bsColor/50" />}
             {hasToolTip && <span ref={tipMessage} className="bg-slate-600 rounded-md w-max top-[2rem] right-0 absolute h-fit line px-2 py-1 text-white hidden">{tooltip}</span>}
         </div >
 

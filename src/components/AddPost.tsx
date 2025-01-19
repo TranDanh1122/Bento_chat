@@ -5,7 +5,7 @@ export default function AddPost(): React.JSX.Element {
     const handleClick = (e: React.MouseEvent<HTMLTextAreaElement>) => {
         const el = e.target as HTMLTextAreaElement
         el.classList.add("bg-[#202020]")
-        el.classList.remove("bg-[#f8f8f8]/15")
+        el.classList.remove("bg-bsColor/15")
         if (ref && ref.current) {
             ref.current.querySelector(".ult")?.classList.add("flex")
             ref.current.querySelector(".ult")?.classList.remove("hidden")
@@ -21,7 +21,7 @@ export default function AddPost(): React.JSX.Element {
                 const texteArea = ref.current.querySelector("textarea")
                 if (texteArea) {
                     texteArea.rows = 3
-                    texteArea.classList.add("bg-[#f8f8f8]/15")
+                    texteArea.classList.add("bg-bsColor/15")
                     texteArea.classList.remove("bg-[#202020]")
                 }
             }
@@ -32,7 +32,7 @@ export default function AddPost(): React.JSX.Element {
 
     return (<div ref={ref} className="relative postForm">
         <img src="/images/avt_5.png" alt="" className="w-12 h-12 object-cover rounded-full absolute top-4 left-2 z-30" />
-        <textarea rows={3} placeholder="Start a post..." onClick={(e) => handleClick(e)} className="w-full h-fit text-[#f8f8f8] bg-[#f8f8f8]/15 rounded-xl pl-20 outline-none p-3 relative z-20"></textarea>
+        <textarea rows={3} placeholder="Start a post..." onClick={(e) => handleClick(e)} className="w-full h-fit text-bsColor bg-bsColor/15 rounded-xl pl-20 outline-none p-3 relative z-20"></textarea>
         <div className=" hidden translate-y-[-20%] justify-between px-2 items-center w-full relative z-20 bg-[#202020] rounded-b-xl  ult">
             <div className="flex">
                 <span className="p-5 cursor-pointer"><img src="/images/underline-icon.svg" alt="" className="w-6 h-6 object-cover" /></span>
@@ -41,7 +41,7 @@ export default function AddPost(): React.JSX.Element {
                 <span className="p-5 cursor-pointer"><img src="/images/tag.svg" alt="" className="w-6 h-6 object-cover " />  </span>
             </div>
             <button type="button" className="base_14_sm w-fit py-3 px-6 rounded-[2rem] border-solid border-[1px]
-             border-[#F8F8F8]/10 text-[#F8F8F8] text-opacity-80 bg-[#282828] flex items-center justify-center gap-2" >
+             border-bsColor/10 text-bsColor text-opacity-80 bg-[#282828] flex items-center justify-center gap-2" >
                 Post
             </button>
         </div>

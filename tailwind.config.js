@@ -17,6 +17,9 @@ module.exports = {
         xxl: { min: "1440px", max: "1600px" }
 
       },
+      colors: {
+        bsColor: "#f8f8f8"
+      },
       fontFamily: {
         rubik: "Rubik, sans-serif",
         inter: "Inter , sans-serif",
@@ -26,6 +29,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/line-clamp'),
+    require('tailwind-scrollbar')
   ],
 }
 

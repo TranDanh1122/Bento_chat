@@ -159,7 +159,7 @@ export default function Auth(): React.JSX.Element {
         <div className="container mb:max-w-none w-full h-full min-h-[100vh] flex flex-col items-center justify-center" >
             <div className="flex gap-4 items-center justify-between w-full ">
                 <img loading="lazy" src="/images/decor.png" className="w-1/3 h-[25vh] max-h-[256px] object-cover rotate-180" />
-                <form autoComplete="off" noValidate={true} onSubmit={(e) => hanleSubmit(e)} className="w-1/3 bg-[url(/images/modal.png)] bg-cover bg-no-repeat bg-center bg-fixed px-10 py-14 rounded-[2rem] shadow-lg shadow-[#f8f8f8]/30">
+                <form autoComplete="off" noValidate={true} onSubmit={(e) => hanleSubmit(e)} className="w-1/3 bg-[url(/images/modal.png)] bg-cover bg-no-repeat bg-center bg-fixed px-10 py-14 rounded-[2rem] shadow-lg shadow-bsColor/30">
                     <img loading="lazy" src="/images/logo.png" alt="" className="w-[3.75rem] h-[3.75rem] object-cover mx-auto" />
                     <h1 className="h4 text-white text-center mt-6">Bento Social</h1>
                     <div className="flex-col flex gap-3 mt-10">
@@ -172,15 +172,15 @@ export default function Auth(): React.JSX.Element {
                     <div className="flex items-center flex-col justify-start gap-3 mt-6">
                         <Button type="submit" text={type == "login" ? "Signin" : (type == "forgot" ? "Reset password" : "Create your account")} />
                         {type != "forgot" && <Button type="button" text="Sign with google" icon="/images/google-icon.svg" />}
-                        {type == "login" && <span className="caption_r text-[#F8F8F8] text-opacity-80">Don’t have an account? <NavLink className="caption_sm" to="/auth/register"> Sign up, it’s free!</NavLink></span>}
-                        {type == "register" && <span className="caption_r text-[#F8F8F8] text-opacity-80">Already have an account? <NavLink className="caption_sm" to="/auth/login"> Sign in</NavLink></span>}
-                        {type == "forgot" && <span className="caption_r text-[#F8F8F8] text-opacity-80">Got your password? <NavLink className="caption_sm" to="/auth/login"> Sign in</NavLink></span>}
+                        {type == "login" && <span className="caption_r text-bsColor text-opacity-80">Don’t have an account? <NavLink className="caption_sm" to="/auth/register"> Sign up, it’s free!</NavLink></span>}
+                        {type == "register" && <span className="caption_r text-bsColor text-opacity-80">Already have an account? <NavLink className="caption_sm" to="/auth/login"> Sign in</NavLink></span>}
+                        {type == "forgot" && <span className="caption_r text-bsColor text-opacity-80">Got your password? <NavLink className="caption_sm" to="/auth/login"> Sign in</NavLink></span>}
                     </div>
                 </form>
                 <img loading="lazy" src="/images/decor.png" className="w-1/3 h-[25vh] max-h-[256px] object-cover" />
             </div>
             <div className="flex flex-col gap-6 items-center justify-center mt-24">
-                <span className="body text-[#F8F8F8]/50">Join over <strong className="text-[#F8F8F8]/85">2M</strong> global social media users</span>
+                <span className="body text-bsColor/50">Join over <strong className="text-bsColor/85">2M</strong> global social media users</span>
                 <img src="/images/avt_group.png" alt="avatar group" className="object-cover w-[11rem] h-10" />
             </div>
         </div >
