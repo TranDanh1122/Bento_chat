@@ -5,7 +5,6 @@ export const register = createAsyncThunk("auth/register", async (data: Pick<User
         const response = await AuthAPI.register(data)
         return response.data
     } catch (error: any) {
-        console.log(error);
         return rejectWithValue(
             error.response?.data?.message || "Registration failed"
         );
@@ -17,7 +16,6 @@ export const login = createAsyncThunk("auth/login", async (data: Pick<User, "use
         const respone = await AuthAPI.login(data)
         return respone.data
     } catch (error: any) {
-        console.log(error);
         return rejectWithValue(
             error.response?.data?.message || "Login failed"
         );
