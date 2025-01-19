@@ -7,6 +7,8 @@ import { profile } from "../redux/authSlicer";
 import { useDispatch } from "react-redux";
 import RightBar from "../Layout/RightBar";
 import Sidebar from "../Layout/Sidebar";
+import Header from "../Layout/Header";
+import AddPost from "../components/AddPost";
 export default function Home(): React.JSX.Element {
 
     const { posts, loading } = useFetchAPI()
@@ -15,8 +17,11 @@ export default function Home(): React.JSX.Element {
     return (
         <div className="container mb:max-w-none w-full h-full min-h-[100vh] flex rounded-[3rem] " >
             <Sidebar />
-            <main className="bg-red-200 w-7/12 h-full min-h-full">
-                2
+            <main className=" w-7/12 h-full min-h-full bg-[#f8f8f8]/15 p-3 backdrop-blur-xl">
+                <Header />
+                <div>
+                    <AddPost />
+                </div>
             </main>
             <RightBar />
         </div>

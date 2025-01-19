@@ -13,9 +13,7 @@ api.defaults.headers.common['Content-Type'] = 'application/json';
 
 export const apiMiddleware: Middleware = (store) => (next) => async (action: unknown) => {
 
-    const token = store.getState().auth.token
-    console.log(token);
-
+    const token = localStorage.getItem("token") ?? store.getState().auth.token
     if (token) {
         api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }

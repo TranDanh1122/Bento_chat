@@ -77,6 +77,7 @@ const authSlicer = createSlice({
         }).addCase(login.fulfilled, (state: AuthStore, action: PayloadAction<{ data: string }>) => {
             state.loading = false
             state.token = action.payload.data
+            localStorage.setItem("token", action.payload.data)
             console.log(action.payload);
         }).addCase(login.rejected, (state: AuthStore, action: PayloadAction<unknown>) => {
             state.loading = false
@@ -86,13 +87,9 @@ const authSlicer = createSlice({
                 state.loading = true
                 console.log(1);
 
-            }).addCase(profile.fulfilled, (state: AuthStore, action: PayloadAction<User>) => {
+            }).addCase(profile.fulfilled, (state: AuthStore, action: PayloadAction<{data:User}>) => {
                 state.loading = false
-                state.user = action.payload
-                console.log(action.payload, 1);
-            }).addCase(profile.rejected, (state: AuthStore, action: PayloadAction<unknown>) => {
-                state.loading = false
-                console.error(action.payload);
+                state.user = action.payload.data
             })
             .addCase(updateProfile.pending, (state: AuthStore) => {
                 state.loading = true

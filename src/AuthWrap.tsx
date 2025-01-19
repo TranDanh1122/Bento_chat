@@ -4,7 +4,8 @@ import { AppState } from "./redux/store";
 import { Navigate } from "react-router-dom";
 export default function AuthWrap({ children }: { children: React.ReactNode }): React.JSX.Element {
     const { token } = useSelector((state: AppState) => state.auth)
-    if (!token) return <Navigate to="/auth/login"></Navigate>
+
+    if (!token && !localStorage.getItem("token")) return <Navigate to="/auth/login"></Navigate>
     return (<>
         {children}
     </>)

@@ -14,7 +14,7 @@ const ButtonGroup = React.memo(({ buttons }: { buttons: ButtonGroup[] }): React.
         button.handleClick()
     }
     return (
-        <div ref={btnGroup} className="flex items-center justify-start">
+        <div ref={btnGroup} className="flex items-center justify-start p-1 bg-[#202020] rounded-[6rem]">
             {
                 buttons.map(button => <button onClick={(e) => handleClick(e, button)} className={`w-full base_14_sm text-[#F8F8F8]/95 py-2 px-6 rounded-[6rem] ${button.default ? "bg-[#f8f8f8]/30" : ""} `}>{button.title}</button>)
             }
