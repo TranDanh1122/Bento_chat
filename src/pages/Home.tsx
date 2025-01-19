@@ -19,8 +19,11 @@ export default function Home(): React.JSX.Element {
             <Sidebar />
             <main className=" w-7/12 h-full min-h-full bg-[#f8f8f8]/15 p-3 backdrop-blur-xl">
                 <Header />
-                <div>
+                <div className="py-2">
                     <AddPost />
+                    <div>
+                        <img src="/images/avatar-2.png" alt="" className="w-11 h-11 object-cover" />
+                    </div>
                 </div>
             </main>
             <RightBar />
