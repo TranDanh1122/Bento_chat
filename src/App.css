@@ -779,8 +779,16 @@ video {
   margin-top: 0.75rem;
 }
 
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
 .mt-6 {
   margin-top: 1.5rem;
+}
+
+.mt-9 {
+  margin-top: 2.25rem;
 }
 
 .line-clamp-2 {
@@ -798,12 +806,20 @@ video {
   display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .hidden {
   display: none;
 }
 
 .aspect-auto {
   aspect-ratio: auto;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
 }
 
 .h-1 {
@@ -820,6 +836,10 @@ video {
 
 .h-12 {
   height: 3rem;
+}
+
+.h-20 {
+  height: 5rem;
 }
 
 .h-3 {
@@ -850,6 +870,14 @@ video {
   height: 1.125rem;
 }
 
+.h-\[17\.5vh\] {
+  height: 17.5vh;
+}
+
+.h-\[2\.75rem\] {
+  height: 2.75rem;
+}
+
 .h-\[25vh\] {
   height: 25vh;
 }
@@ -871,6 +899,10 @@ video {
   height: 100%;
 }
 
+.h-\[17vh\] {
+  height: 17vh;
+}
+
 .max-h-\[15vh\] {
   max-height: 15vh;
 }
@@ -881,6 +913,14 @@ video {
 
 .max-h-\[300px\] {
   max-height: 300px;
+}
+
+.max-h-\[50vh\] {
+  max-height: 50vh;
+}
+
+.max-h-\[30vh\] {
+  max-height: 30vh;
 }
 
 .min-h-\[100vh\] {
@@ -913,6 +953,10 @@ video {
 
 .w-2\/12 {
   width: 16.666667%;
+}
+
+.w-20 {
+  width: 5rem;
 }
 
 .w-28 {
@@ -951,6 +995,10 @@ video {
   width: 11rem;
 }
 
+.w-\[2\.75rem\] {
+  width: 2.75rem;
+}
+
 .w-\[3\.75rem\] {
   width: 3.75rem;
 }
@@ -981,28 +1029,12 @@ video {
   min-width: 16.7%;
 }
 
-.min-w-\[17vh\] {
-  min-width: 17vh;
-}
-
-.min-w-\[16vw\] {
-  min-width: 16vw;
-}
-
-.min-w-\[25vw\] {
-  min-width: 25vw;
-}
-
-.min-w-\[15vw\] {
-  min-width: 15vw;
-}
-
-.min-w-\[20vw\] {
-  min-width: 20vw;
-}
-
 .min-w-\[25\%\] {
   min-width: 25%;
+}
+
+.min-w-\[50\%\] {
+  min-width: 50%;
 }
 
 .min-w-fit {
@@ -1016,6 +1048,10 @@ video {
 
 .max-w-full {
   max-width: 100%;
+}
+
+.max-w-\[33\%\] {
+  max-width: 33%;
 }
 
 .flex-grow {
@@ -1034,6 +1070,11 @@ video {
 
 .translate-x-\[-25\%\] {
   --tw-translate-x: -25%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-\[10\%\] {
+  --tw-translate-x: 10%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1057,6 +1098,11 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.translate-y-\[-55\%\] {
+  --tw-translate-y: -55%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .rotate-180 {
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1068,6 +1114,10 @@ video {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -1128,6 +1178,10 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
 }
 
 .overflow-y-scroll {
@@ -1289,8 +1343,28 @@ video {
   background-image: url(/images/modal.png);
 }
 
+.bg-\[url\(\/images\/profile\.png\)\] {
+  background-image: url(/images/profile.png);
+}
+
 .bg-cover {
   background-size: cover;
+}
+
+.bg-\[100\%\2c 100\%\] {
+  background-size: 100%,100%;
+}
+
+.bg-\[120\%\2c 100\%\] {
+  background-size: 120%,100%;
+}
+
+.bg-\[50\%\2c 100\%\] {
+  background-size: 50%,100%;
+}
+
+.bg-\[90\%\2c 100\%\] {
+  background-size: 90%,100%;
 }
 
 .bg-fixed {
@@ -1354,6 +1428,11 @@ video {
   padding-right: 0.75rem;
 }
 
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -1394,9 +1473,14 @@ video {
   padding-bottom: 6px;
 }
 
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .pb-3 {
