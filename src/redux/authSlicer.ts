@@ -72,6 +72,7 @@ const authSlicer = createSlice({
         }).addCase(login.fulfilled, (state: AuthStore, action: PayloadAction<{ data: string }>) => {
             state.loading = false
             state.token = action.payload.data
+            localStorage.setItem("token", action.payload.data)
             console.log(action.payload);
         }).addCase(login.rejected, (state: AuthStore, action: PayloadAction<unknown>) => {
             state.loading = false
