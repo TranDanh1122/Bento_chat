@@ -9,8 +9,8 @@ const NAV_DATA = [
     { title: "Explode", icon: "/images/explode.svg", to: "/explode" }
 
 ]
-const Nav = React.memo((): React.JSX.Element => {
-    return <ul className="flex flex-col gap">
+const Nav = React.memo(({ isOpen }: { isOpen: boolean }): React.JSX.Element => {
+    return <ul className={`flex flex-col ${isOpen ? "w-full" : "w-fit"}  gap`}>
         {NAV_DATA.map(nav => (
             <li className="">
                 <NavLink className={({ isActive }) => `base_14_sm flex items-center justify-start gap-4 p-3  rounded-xl
@@ -22,7 +22,7 @@ const Nav = React.memo((): React.JSX.Element => {
                                 mask: `url(${nav.icon}) center/ contain no-repeat`,
                                 WebkitMask: `url(${nav.icon}) center/ contain no-repeat`
                             }} className={`w-[1.125rem] h-[1.125rem] bg-bsColor/50 ${isActive ? "bg-white" : "bg-bsColor/50"}`}> </i>
-                            {nav.title}
+                            {isOpen && nav.title}
                         </>
                     )}
                 </NavLink>

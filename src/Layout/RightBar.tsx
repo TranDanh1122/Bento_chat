@@ -25,7 +25,7 @@ const RightBar = React.memo((): React.JSX.Element => {
         setViewing(type)
     }
     return (
-        <aside className=" w-3/12 h-full min-h-full bg-bsColor/5 p-3 flex flex-col gap-3 backdrop-blur-xl">
+        <aside className=" w-3/12 min-w-[25%] h-full min-h-full bg-bsColor/5 p-3 flex flex-col gap-3 backdrop-blur-xl">
             <ButtonGroup buttons={
                 [
                     { title: "Who To Follow", handleClick: () => onClick("follow"), default: true },

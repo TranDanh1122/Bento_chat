@@ -7,7 +7,6 @@ import NotificationProvider from './context/NotificationContext'
 import { BrowserRouter } from "react-router-dom"
 createRoot(document.getElementById('root')!).render(
 
-  <StrictMode>
     <Provider store={store}>
       <NotificationProvider>
         <BrowserRouter>
@@ -15,5 +14,4 @@ createRoot(document.getElementById('root')!).render(
         </BrowserRouter>
       </NotificationProvider>
     </Provider>
-  </StrictMode>,
 )

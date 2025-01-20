@@ -11,11 +11,20 @@ const PostItem = React.memo(({ post }: { post: Post }): React.JSX.Element => {
                     {/* <img src="/images/photo.png" className="w-auto h-auto aspect-auto max-w-full max-h-[300px] rounded-3xl" /> */}
                 </p>
                 <div className="flex items-center justify-start gap-4 w-full caption_sm text-bsColor/50">
-                    <span className="flex items-center gap-2 "><img src="/images/noti.svg" className="w-5 h-4 object-contain" /> {post.likedCount}</span>
-                    <span className="flex items-center gap-2"><img src="/images/repost-icon.svg" className="w-5 h-4 object-contain" />  {12}</span>
-                    <span className="flex items-center gap-2"><img src="/images/comment-icon.svg" className="w-5 h-4 object-contain" />  {post.commentCount}</span>
-                    <img src="/images/bookmark-icon.svg" className="w-5 h-4 object-contain ml-auto" />
-                    <img src="/images/share-icon.svg" className="w-5 h-4 object-contain" />
+                    <button className="flex items-center gap-2 ">
+                        <i style={{
+                            fill: "red",
+                            mask: "url(/images/noti.svg) center / contain no-repeat",
+                            WebkitMask: "url(/images/noti.svg) center / contain no-repeat"
+                        }} className={`w-5 h-4 ${post.hasLiked ? "bg-red-400" : "bg-bsColor/50"}`}></i>
+
+                        {post.likedCount}
+                    </button>
+                    <button className="flex items-center gap-2">
+                        <img src="/images/repost-icon.svg" className="w-5 h-4 object-contain" />  {12}</button>
+                    <button className="flex items-center gap-2"><img src="/images/comment-icon.svg" className="w-5 h-4 object-contain" />  {post.commentCount}</button>
+                    <button><img src="/images/bookmark-icon.svg" className="w-5 h-4 object-contain ml-auto" /></button>
+                    <button><img src="/images/share-icon.svg" className="w-5 h-4 object-contain" /></button>
                 </div>
 
             </div>

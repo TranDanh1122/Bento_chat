@@ -19,7 +19,7 @@ export default function Home(): React.JSX.Element {
     return (
         <div className="container mb:max-w-none w-full h-full min-h-[100vh] flex rounded-[3rem] " >
             <Sidebar />
-            <main className=" w-7/12 h-full min-h-full bg-bsColor/15 p-3 backdrop-blur-xl  overflow-hidden">
+            <main className="w-auto h-full min-h-full bg-bsColor/15 p-3 backdrop-blur-xl  overflow-hidden">
                 <Header />
                 <div className="py-2 flex h-full flex-col">
                     <AddPost />
@@ -36,9 +36,21 @@ export default function Home(): React.JSX.Element {
                                     <img src="/images/photo.png" className="w-auto h-auto aspect-auto max-w-full max-h-[300px] rounded-3xl" />
                                 </p>
                                 <div className="flex items-center justify-start gap-4 w-full caption_sm text-bsColor/50">
-                                    <span className="flex items-center gap-2 "><img src="/images/noti.svg" className="w-5 h-4 object-contain" /> 12</span>
-                                    <span className="flex items-center gap-2"><img src="/images/repost-icon.svg" className="w-5 h-4 object-contain" /> 12</span>
-                                    <span className="flex items-center gap-2"><img src="/images/comment-icon.svg" className="w-5 h-4 object-contain" /> 12</span>
+                                    <span className="flex items-center gap-2 ">
+                                        <i style={{
+                                            mask: "url(/images/noti.svg) center / contain no-repeat",
+                                            WebkitMask: "url(/images/noti.svg) center / contain no-repeat"
+                                        }} className={`w-5 h-4 bg-red-500 fill-current`}></i>
+                                        12
+                                    </span>
+                                    <span className="flex items-center gap-2">
+                                        <img src="/images/repost-icon.svg" className="w-5 h-4 object-contain" />
+                                        12
+                                    </span>
+                                    <span className="flex items-center gap-2">
+                                        <img src="/images/comment-icon.svg" className="w-5 h-4 object-contain" />
+                                        12
+                                    </span>
                                     <img src="/images/bookmark-icon.svg" className="w-5 h-4 object-contain ml-auto" />
                                     <img src="/images/share-icon.svg" className="w-5 h-4 object-contain" />
                                 </div>
