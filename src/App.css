@@ -981,26 +981,6 @@ video {
   min-width: 16.7%;
 }
 
-.min-w-\[17vh\] {
-  min-width: 17vh;
-}
-
-.min-w-\[16vw\] {
-  min-width: 16vw;
-}
-
-.min-w-\[25vw\] {
-  min-width: 25vw;
-}
-
-.min-w-\[15vw\] {
-  min-width: 15vw;
-}
-
-.min-w-\[20vw\] {
-  min-width: 20vw;
-}
-
 .min-w-\[25\%\] {
   min-width: 25%;
 }
@@ -1008,6 +988,10 @@ video {
 .min-w-fit {
   min-width: -moz-fit-content;
   min-width: fit-content;
+}
+
+.min-w-\[58\%\] {
+  min-width: 58%;
 }
 
 .max-w-28 {
@@ -1354,6 +1338,11 @@ video {
   padding-right: 0.75rem;
 }
 
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -1392,11 +1381,6 @@ video {
 .py-\[6px\] {
   padding-top: 6px;
   padding-bottom: 6px;
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 .pb-3 {
