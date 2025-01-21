@@ -18,7 +18,7 @@ export default function Notification(): React.JSX.Element {
                 { title: "Replies", handleClick: () => { } },
                 { title: "Follows", handleClick: () => { } }
             ]}></ButtonGroup>
-            <div className="flex flex-col gap-2 py-4 overflow-y-scroll scrollbar-none max-h-[calc(100vh-100px)]">
+            <div className="flex flex-col gap-2 py-4 mt-2 overflow-y-scroll scrollbar-none max-h-[calc(100vh-100px)]">
                 <Noti title="Kohaku, Moyo Shiro, Dash and 2 others" type="follow" desc="follow you" />
                 <Noti title="Kohaku liked your post" desc="SimpleList link.com/media.png" type="liked" />
                 <Noti title="Kohaku reposted your post" type="repost" desc="SimpleList link.com/media.png" />
