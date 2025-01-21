@@ -6,19 +6,32 @@ import { useSelector } from "react-redux";
 import { AppState } from "../redux/store";
 import PostItem from "../components/PostItem";
 import { v4 } from "uuid";
+import Input2 from "../components/Input2";
 export default function Profile(): React.JSX.Element {
     const [viewing, setViewing] = React.useState<string>("posts")
     const { posts } = useSelector((state: AppState) => state.home)
+    const { user } = useSelector((state: AppState) => state.auth)
     const [edit, setEdit] = React.useState<boolean>(false)
     return (<>
         <div className="container mb:max-w-none w-full h-full min-h-[100vh] flex rounded-[3rem] " >
             <Sidebar />
-            <main className="w-auto min-w-[50%] h-full min-h-full bg-bsColor/15  backdrop-blur-xl  overflow-hidden">
-                <div className="w-full h-[17vh] bg-[url(/images/profile.png)] bg-no-repeat bg-center p-3 bg-[100%,100%] flex  flex-wrap justify-between items-start">
-                    <button ><img src="/images/back.svg" className="w-[2.75rem] h-[2.75rem] object-cover" /></button>
-                    <button ><img src="/images/three_dot.svg" className="w-[2.75rem] h-[2.75rem] object-cover ml-aut" /></button>
+            <main className="w-auto min-w-[58%] h-full min-h-full bg-bsColor/15  backdrop-blur-xl  overflow-hidden">
+                <div className="w-full h-[17vh] bg-[url(/images/profile.png)] bg-no-repeat bg-center p-3 bg-[100%,100%] ">
+                    <div className="flex gap-2 flex-wrap justify-start items-center w-full">
+                        <button ><img src="/images/back.svg" className="w-[2.75rem] h-[2.75rem] object-cover" /></button>
+                        {edit &&
+                            <>
+                                <button className="ml-auto"><img src="/images/delete.png" className="w-[2.75rem] h-[2.75rem] object-cover " /></button>
+                                <button ><img src="/images/camera.png" className="w-[2.75rem] h-[2.75rem] object-cover " /></button>
+                                <button className="text-bsColor/70 bg-[#383838] base_14_sm px-6 py-2 rounded-3xl" >Save</button>
+                            </>
+                        }
+                        {!edit && <button className="ml-auto"><img src="/images/three_dot.svg" className="w-[2.75rem] h-[2.75rem] object-cover " /></button>}
+                    </div>
+
+
                 </div>
-                <div className=" px-6">
+                <div className={`${!edit ? "px-6" : "px-3"}`}>
                     <img src="/images/avt_profile.png" className="w-20 h-20 object-cover rounded-full translate-x-[10%] translate-y-[-55%]" />
 
                     {!edit && <>
@@ -220,8 +233,14 @@ export default function Profile(): React.JSX.Element {
                     </>
                     }
 
-                    {edit && <div className="">
-                        
+                    {edit && <div className="w-full h-full bg-[#383838] rounded-md p-4">
+                        <Input2 label="Name" icon="/images/name.svg" value={`${user.firstName} ${user.lastName}`} type="input" />
+                        <Input2 label="User" icon="/images/username.svg" value={user.username} type="input" />
+                        <Input2 label="Bio" icon="/images/pencil.svg" value={user.bio} type="textarea" />
+                        <Input2 label="Link" icon="/images/link.svg" value={user.cover} type="input" />
+                        <Input2 label="Private profile" icon="/images/shield_check.svg" value={user.bio} type="checkbox" />
+                        <Input2 label="Location" icon="/images/earth.svg" value="earth" type="input" />
+
                     </div>}
                 </div>
             </main >
